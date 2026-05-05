@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Giulio Oldrati — Stand Up Comedy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700;800;900&family=DM+Sans:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --night:#0a1628;
+  --night-2:#06101e;
+  --night-3:#040a14;
+  --pink:#e8175d;
+  --pink-2:#ff2e7a;
+  --gold:#f5c518;
+  --cream:#f0e8d8;
+  --cream-2:#e6dcc6;
+  --green:#2bb673;
+  --ink:#0a1628;
+  --shadow: 0 18px 40px rgba(0,0,0,.45);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--night);color:var(--cream);font-family:"DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+
+/* ---------- Halftone / texture backgrounds ---------- */
+.halftone{
+  background-image: radial-gradient(rgba(240,232,216,.12) 1.1px, transparent 1.4px);
+  background-size: 14px 14px;
+}
+.halftone-pink{
+  background-image: radial-gradient(rgba(232,23,93,.55) 1.4px, transparent 1.7px);
+  background-size: 10px 10px;
+}
+.halftone-gold{
+  background-image: radial-gradient(rgba(245,197,24,.85) 1.4px, transparent 1.7px);
+  background-size: 10px 10px;
+}
+.noise::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.08;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+}
+
+/* ---------- NAVBAR ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(10,22,40,.86);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  border-bottom:1px solid rgba(232,23,93,.55);
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.brand{
+  font-family:"Anton",sans-serif;letter-spacing:.04em;font-size:24px;color:var(--cream);
+  display:flex;align-items:center;gap:10px;
+}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 3px rgba(232,23,93,.18);}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-family:"Barlow Condensed";font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:14px;}
+.nav a.navlink{position:relative;padding:6px 0;color:var(--cream);}
+.nav a.navlink::after{
+  content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.nav a.navlink:hover::after, .nav a.navlink.active::after{transform:scaleX(1);}
+.burger{display:none;background:none;border:0;color:var(--cream);width:40px;height:40px;cursor:pointer}
+.burger svg{width:28px;height:28px}
+
+@media (max-width:760px){
+  .nav ul{display:none;position:absolute;top:62px;left:0;right:0;flex-direction:column;background:var(--night-2);padding:18px 28px;border-bottom:1px solid rgba(232,23,93,.4);}
+  .nav ul.open{display:flex;}
+  .nav ul a.navlink{padding:10px 0;font-size:18px}
+  .burger{display:inline-flex;align-items:center;justify-content:center}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:calc(100vh - 60px);
+  padding:160px 28px 110px;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+}
+.hero-bg .stripe{
+  position:absolute;left:0;right:0;height:34px;background:var(--pink);
+  display:flex;align-items:center;gap:32px;color:var(--night);
+  font-family:"Anton";letter-spacing:.18em;font-size:18px;
+  white-space:nowrap;overflow:hidden;
+  border-top:2px solid var(--night-3);border-bottom:2px solid var(--night-3);
+}
+.hero-bg .stripe.top{top:40px;transform:rotate(-3deg);}
+.hero-bg .stripe.bot{bottom:24px;transform:rotate(2deg);background:var(--gold);}
+.hero-bg .stripe .marquee{display:flex;gap:32px;animation:marquee 28s linear infinite;}
+.hero-bg .stripe.bot .marquee{animation-duration:34s;animation-direction:reverse;}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.hero-bg .blob{
+  position:absolute;border-radius:50%;filter:blur(2px);opacity:.6;
+}
+
+.hero-inner{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center;
+}
+
+.kicker{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:"Barlow Condensed";font-weight:700;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--pink);font-size:14px;margin-bottom:24px;
+}
+.kicker .bar{width:46px;height:2px;background:var(--pink)}
+
+.display{
+  font-family:"Anton",sans-serif;font-weight:400;
+  font-size:clamp(72px,14vw,200px);
+  line-height:.85;letter-spacing:-.01em;
+  color:var(--cream);text-transform:uppercase;
+  margin:0;
+}
+.display span{display:block;overflow:hidden;}
+.display span i{
+  font-style:normal;display:inline-block;
+  transform:translateX(-110%);opacity:0;
+  animation: slideIn .9s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.display span:nth-child(1) i{animation-delay:.15s}
+.display span:nth-child(2) i{animation-delay:.35s; color:var(--pink); -webkit-text-stroke: 0; }
+.display .underline{
+  display:inline-block;background-image:linear-gradient(transparent 70%, var(--gold) 70%, var(--gold) 90%, transparent 90%);
+  padding:0 .05em;
+}
+@keyframes slideIn{to{transform:translateX(0);opacity:1}}
+
+.bio{
+  max-width:620px;margin-top:30px;color:var(--cream);
+  font-size:17px;line-height:1.55;
+  opacity:0;transform:translateY(8px);
+  animation: fadeUp .9s ease .9s forwards;
+}
+.bio strong{color:var(--gold);font-weight:700}
+.bio em{font-family:"Caveat",cursive;font-style:normal;color:var(--pink);font-size:1.18em;letter-spacing:.01em}
+@keyframes fadeUp{to{opacity:1;transform:none}}
+
+.cta-row{
+  display:flex;flex-wrap:wrap;flex-direction:row;align-items:center;gap:18px;margin-top:34px;
+  opacity:0;transform:translateY(8px);
+  animation: fadeUp .9s ease 1.15s forwards;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:22px 30px;border-radius:2px;cursor:pointer;
+  font-family:"Barlow Condensed";font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  font-size:19px;border:2px solid transparent;transition:all .25s ease;
+}
+.btn-gold{background:var(--gold);color:var(--ink);border-color:var(--gold);box-shadow:6px 6px 0 var(--pink);}
+.btn-gold:hover{transform:translate(-2px,-2px);box-shadow:10px 10px 0 var(--pink);}
+.btn-ghost{background:transparent;color:var(--cream);border-color:var(--cream);}
+.btn-ghost:hover{background:var(--cream);color:var(--ink);}
+
+/* hero portrait */
+.portrait-wrap{
+  position:relative;justify-self:end;width:100%;max-width:460px;aspect-ratio: 4/5;
+}
+.portrait-wrap .halo{
+  position:absolute;inset:-26px -30px -10px -10px;border-radius:50%;
+  background:var(--pink);
+}
+.portrait-wrap .halo.dots{
+  inset:-50px -8px -28px -38px;background:transparent;
+}
+.portrait-wrap .halo.gold{
+  inset:auto -20px -36px auto;width:140px;height:140px;background:var(--gold);
+}
+.portrait-frame{
+  position:absolute;inset:0;
+  background:var(--night-2);
+  border:3px solid var(--cream);
+  clip-path: polygon(0 0, 100% 4%, 96% 100%, 4% 96%);
+  overflow:hidden;
+  transform: rotate(-1.5deg);
+  box-shadow: var(--shadow);
+}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position: center 22%;filter:contrast(1.05) saturate(1.05);}
+.portrait-tag{
+  position:absolute;left:-10px;bottom:18px;z-index:3;
+  background:var(--gold);color:var(--ink);
+  font-family:"Anton";font-size:18px;letter-spacing:.12em;text-transform:uppercase;
+  padding:8px 14px;transform:rotate(-4deg);box-shadow:4px 4px 0 var(--night-3);
+}
+.scribble{
+  position:absolute;font-family:"Caveat",cursive;color:var(--gold);font-size:32px;line-height:1;
+}
+.scribble.s1{top:-8px;right:6%;transform:rotate(8deg);color:var(--cream)}
+.scribble.s2{left:14%;bottom:-26px;transform:rotate(-6deg);color:var(--pink)}
+
+@media (max-width:860px){
+  .hero{padding:120px 18px 80px;min-height:auto}
+  .cta-row{flex-direction:row}
+  .btn{padding:18px 22px;font-size:16px}
+  .hero-inner{grid-template-columns:1fr;gap:36px}
+  .portrait-wrap{order:-1;justify-self:center;max-width:360px}
+  .hero-bg .stripe.top{top:24px}
+  .hero-bg .stripe.bot{bottom:14px}
+  .display{font-size:clamp(64px,18vw,140px)}
+}
+
+/* ---------- SECTION HEADER ---------- */
+.section{position:relative;padding:120px 28px;overflow:hidden}
+.wrap{max-width:1280px;margin:0 auto;position:relative;z-index:2}
+.section-label{
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:"Barlow Condensed";font-weight:700;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--pink);font-size:14px;margin-bottom:14px;
+}
+.section-label .bar{width:46px;height:2px;background:var(--pink)}
+.section-title{
+  font-family:"Anton",sans-serif;font-size:clamp(56px,9vw,128px);line-height:.9;
+  margin:0 0 56px;color:var(--cream);text-transform:uppercase;letter-spacing:-.01em;
+}
+.section-title .accent{color:var(--gold)}
+
+/* ---------- VIDEO ---------- */
+#video{background:var(--night-2);}
+#video .wrap{max-width:1180px}
+.video-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:28px;
+}
+.video-card{
+  position:relative;aspect-ratio:16/9;background:var(--night-3);
+  border:3px solid var(--pink);box-shadow:8px 8px 0 var(--gold);
+  transition:transform .25s ease, box-shadow .25s ease;
+  overflow:hidden;
+}
+.video-card iframe{width:100%;height:100%;border:0;display:block;background:#000}
+.video-card.feature{grid-column:1 / -1;max-width:780px;margin:8px auto 0;border-color:var(--gold);box-shadow:8px 8px 0 var(--pink);}
+.video-card:hover{transform:translate(-3px,-3px);box-shadow:12px 12px 0 var(--gold)}
+.video-card.feature:hover{box-shadow:12px 12px 0 var(--pink)}
+.video-card .vlabel{
+  position:absolute;left:10px;top:10px;z-index:2;
+  background:var(--night-3);color:var(--cream);
+  font-family:"Barlow Condensed";font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:11px;padding:6px 10px;border:1px solid var(--cream);
+}
+.video-card .placeholder{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:14px;color:var(--cream);
+}
+.video-card .placeholder .play{
+  width:74px;height:74px;border-radius:50%;background:var(--pink);display:flex;align-items:center;justify-content:center;color:var(--cream);
+  font-size:30px;box-shadow:0 0 0 6px rgba(232,23,93,.18);
+}
+.video-card .placeholder small{font-family:"Barlow Condensed";letter-spacing:.2em;text-transform:uppercase;font-size:12px;opacity:.75}
+
+/* social row */
+.socials{
+  display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin-top:64px;
+}
+.social-card{
+  display:flex;align-items:center;gap:14px;padding:14px 22px;
+  background:var(--night-3);border:2px solid var(--cream);color:var(--cream);
+  font-family:"Barlow Condensed";font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:15px;
+  transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+}
+.social-card:nth-child(1):hover{background:var(--pink);border-color:var(--pink);color:var(--cream);transform:translateY(-4px) rotate(-1deg)}
+.social-card:nth-child(2):hover{background:var(--cream);border-color:var(--cream);color:var(--ink);transform:translateY(-4px) rotate(1deg)}
+.social-card:nth-child(3):hover{background:var(--gold);border-color:var(--gold);color:var(--ink);transform:translateY(-4px) rotate(-1deg)}
+.social-card .ic{width:30px;height:30px;display:inline-flex;align-items:center;justify-content:center}
+.social-card .ic svg{width:24px;height:24px;fill:currentColor}
+
+@media (max-width:760px){
+  .video-grid{grid-template-columns:1fr}
+  .video-card.feature{grid-column:auto}
+}
+
+/* ---------- DATE ---------- */
+#date{background:var(--night);}
+.dates-list{
+  display:grid;grid-template-columns:1fr;gap:0;border-top:2px solid rgba(240,232,216,.18);
+}
+.date-row{
+  display:grid;grid-template-columns: 140px 1.4fr 2fr auto;gap:24px;align-items:center;
+  padding:26px 8px;border-bottom:2px solid rgba(240,232,216,.18);
+  position:relative;transition: background .25s ease, padding .25s ease;
+}
+.date-row:hover{background:rgba(232,23,93,.08);padding-left:18px;}
+.date-row .day{
+  font-family:"Anton";color:var(--gold);font-size:64px;line-height:1;letter-spacing:-.01em;
+}
+.date-row .day small{display:block;font-family:"Barlow Condensed";font-size:14px;letter-spacing:.24em;color:var(--cream);text-transform:uppercase;margin-top:6px;font-weight:700}
+.date-row .city{
+  font-family:"Anton";font-size:34px;line-height:1;color:var(--pink);text-transform:uppercase;letter-spacing:.01em;
+}
+.date-row .city .region{display:block;font-family:"Barlow Condensed";font-size:13px;color:var(--cream);letter-spacing:.18em;margin-top:6px;font-weight:600}
+.date-row .venue{font-size:16px;color:var(--cream)}
+.date-row .venue .meta{display:block;font-family:"Barlow Condensed";font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-2);opacity:.75;margin-top:4px}
+.date-row .badge{
+  font-family:"Barlow Condensed";font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px;
+  padding:8px 14px;border:1.5px solid var(--cream);color:var(--cream);white-space:nowrap;
+}
+
+@media (max-width:760px){
+  .date-row{grid-template-columns: 90px 1fr;grid-template-rows:auto auto;gap:8px 18px;padding:22px 6px}
+  .date-row .day{font-size:48px}
+  .date-row .city{font-size:24px;grid-column:2}
+  .date-row .venue{grid-column:1 / -1;margin-left:108px;margin-top:-6px}
+  .date-row .badge{grid-column:1 / -1;margin-left:108px;justify-self:start}
+  .date-row:hover{padding-left:6px}
+}
+
+/* ---------- CONTATTI ---------- */
+.contatti{
+  margin-top:120px;position:relative;
+  border:3px solid var(--gold);
+  background:linear-gradient(180deg, rgba(245,197,24,.06), rgba(232,23,93,.05));
+  padding:56px 44px;
+}
+.contatti::before{
+  content:"";position:absolute;inset:-3px;pointer-events:none;
+  background-image:repeating-linear-gradient(45deg,transparent 0 14px, rgba(245,197,24,.05) 14px 16px);
+}
+.contatti-kicker{
+  font-family:"Anton",sans-serif;
+  font-size:clamp(28px,3.6vw,46px);
+  letter-spacing:.06em;
+  line-height:1;
+  margin-bottom:18px;
+}
+.scena-kicker{
+  font-family:"Anton",sans-serif;
+  font-size:clamp(28px,3.6vw,46px);
+  letter-spacing:.06em;
+  line-height:1;
+  margin-bottom:18px;
+}
+.contatti h3{
+  font-family:"Anton";font-size:clamp(44px,6vw,84px);line-height:.95;color:var(--cream);
+  margin:0 0 12px;text-transform:uppercase;
+}
+.contatti h3 em{font-style:normal;color:var(--gold);font-family:"Caveat";font-weight:700;text-transform:none;letter-spacing:.01em;}
+.contatti .lede{color:var(--cream-2);max-width:520px;font-size:17px;line-height:1.5;margin-bottom:28px}
+.contact-cards{display:flex;gap:20px;flex-wrap:wrap}
+.contact-card{
+  display:flex;align-items:center;gap:18px;padding:18px 22px;
+  background:var(--night-3);border:2px solid var(--cream);
+  transition: all .25s ease;
+  flex:1 1 280px;
+}
+.contact-card:hover{transform:translateY(-3px);background:var(--pink);border-color:var(--pink);}
+.contact-card .icon{width:46px;height:46px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-card .icon svg{width:22px;height:22px;fill:currentColor}
+.contact-card .lab{font-family:"Barlow Condensed";font-weight:700;letter-spacing:.22em;text-transform:uppercase;font-size:11px;color:var(--cream-2)}
+.contact-card .val{font-family:"Anton";font-size:24px;letter-spacing:.02em;color:var(--cream);margin-top:2px}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:var(--night-3);padding:36px 28px;border-top:1px solid rgba(240,232,216,.08);
+}
+.foot-inner{
+  max-width:1280px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;
+  font-family:"Barlow Condensed";letter-spacing:.18em;text-transform:uppercase;font-size:13px;color:var(--cream-2);
+}
+.foot-icons{display:flex;gap:14px}
+.foot-icons a{
+  width:36px;height:36px;border:1.5px solid var(--cream-2);color:var(--cream-2);
+  display:inline-flex;align-items:center;justify-content:center;transition:all .2s ease;
+}
+.foot-icons a:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.foot-icons svg{width:16px;height:16px;fill:currentColor}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);}
+.reveal.visible{opacity:1;transform:none}
+.reveal.delay-1{transition-delay:.1s}
+.reveal.delay-2{transition-delay:.2s}
+.reveal.delay-3{transition-delay:.3s}
+.reveal.delay-4{transition-delay:.4s}
+
+/* tiny photo strip in hero (mobile) */
+.thumb-strip{
+  display:flex;gap:8px;margin-top:16px;
+}
+.thumb-strip .t{
+  flex:1;aspect-ratio: 1/1.1;background-size:cover;background-position:center;
+  border:2px solid var(--cream);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand">GIULIO&nbsp;OLDRATI</a>
+    <ul id="navlist">
+      <li><a class="navlink active" href="#home" style="font-size: 20px">Home</a></li>
+      <li><a class="navlink" href="#video" style="font-size: 20px">Video</a></li>
+      <li><a class="navlink" href="#date" style="font-size: 20px">Date &amp; Contatti</a></li>
+    </ul>
+    <button class="burger" aria-label="Menu" id="burgerBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="hero noise" data-screen-label="01 Home">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="stripe top">
+      <div class="marquee">
+        <span>★ GIULIO OLDRATI</span><span>★ STAND UP COMEDY</span><span>★ FLIPPATO</span><span>★ STORYTELLING</span><span>★ GARPEZ</span><span>★ COLLETTIVO VARIEGÀ</span><span>★ MINDSET</span><span>★ VOGHERA</span>
+        <span>★ GIULIO OLDRATI</span><span>★ STAND UP COMEDY</span><span>★ FLIPPATO</span><span>★ STORYTELLING</span><span>★ GARPEZ</span><span>★ COLLETTIVO VARIEGÀ</span><span>★ MINDSET</span><span>★ VOGHERA</span>
+      </div>
+    </div>
+    <div class="stripe bot">
+      <div class="marquee">
+        <span>◆ GIULIO OLDRATI</span><span>◆ STAND UP COMEDY</span><span>◆ FLIPPATO</span><span>◆ STORYTELLING</span><span>◆ GARPEZ</span><span>◆ COLLETTIVO VARIEGÀ</span><span>◆ MINDSET</span><span>◆ VOGHERA</span>
+        <span>◆ GIULIO OLDRATI</span><span>◆ STAND UP COMEDY</span><span>◆ FLIPPATO</span><span>◆ STORYTELLING</span><span>◆ GARPEZ</span><span>◆ COLLETTIVO VARIEGÀ</span><span>◆ MINDSET</span><span>◆ VOGHERA</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="kicker" style="font-size: 18px">STAND UP COMEDY · DAL 2019</div>
+      <h1 class="display">
+        <span><i>GIULIO</i></span>
+        <span><i>OLDRATI</i></span>
+      </h1>
+      <p class="bio">
+        Giulio Oldrati nasce comicamente nel <strong>2019</strong> tra i palchi irregolari di Voghera col collettivo <em style="font-size: 21.06px">Garpez</em>. Dal 2022 è di stanza a Milano, dove vince la <strong>terza edizione dell'Open Mic dello Zelig</strong>. Da allora porta il suo storytelling energico, surreale e impietosamente autobiografico tra Milano, Genova e Torino. Dal 2025 collabora col <em style="font-size: 21.06px">Collettivo Variegà</em>; nel 2026 viene selezionato per l'<strong>Open Mic Tour di Comedy Central</strong>. Lo stile? Auto-ironia feroce, umorismo pungente e una visione storta ma lucidissima del mondo.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-gold" href="#date">📅 Prossime Date</a>
+        <a class="btn btn-ghost" href="#video">▶ Guarda i Video</a>
+      </div>
+    </div>
+
+    <div class="portrait-wrap">
+      <div class="halo halftone-pink dots"></div>
+      <div class="halo halftone-gold gold" style="border-radius:50%;"></div>
+      <div class="scribble s1">
+</div>
+      <div class="portrait-frame">
+        <!-- INSERISCI FOTO GIULIO QUI — img con object-fit: cover -->
+        <img src="assets/giulio-mic.jpeg" alt="Giulio Oldrati" />
+      </div>
+      <div class="portrait-tag">OH SONO IO!</div>
+      <div class="scribble s2">↘ on stage</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VIDEO ============ -->
+<section id="video" class="section halftone" data-screen-label="02 Video">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label scena-kicker" style="margin-bottom: 36px">I MIEI VIDEO</div>
+    </div>
+
+    <div class="video-grid">
+      <!-- SOSTITUIRE src con URL YouTube embed -->
+      <div class="video-card reveal delay-1">
+        <iframe src="https://www.youtube.com/embed/6gRa1bAQZ48" title="Giulio Oldrati — Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="video-card reveal delay-2">
+        <iframe src="https://www.youtube.com/embed/NtB8I63GEjA?start=184" title="Giulio Oldrati — Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="video-card feature reveal delay-3">
+        <span class="vlabel">Set Completo · Comedy Central Open Mic Tour</span>
+        <div class="placeholder">
+          <div class="play">▶</div>
+          <small>Incolla qui &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID"&gt;</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="socials reveal delay-2">
+      <a class="social-card" href="https://www.instagram.com/giulio_con_la_g/" target="_blank" rel="noopener" aria-label="Instagram">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.43.37 1.06.42 2.23.07 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.17-1.06.37-2.23.42-1.25.07-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.43-.37-1.06-.42-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.17 1.06-.37 2.23-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52 0-4.76.06-1.05.05-1.62.22-2 .37-.5.2-.85.43-1.22.8-.37.37-.6.72-.8 1.22-.15.38-.32.95-.37 2C2.8 9.48 2.8 9.85 2.8 13s0 3.52.06 4.76c.05 1.05.22 1.62.37 2 .2.5.43.85.8 1.22.37.37.72.6 1.22.8.38.15.95.32 2 .37 1.24.06 1.61.06 4.76.06s3.52 0 4.76-.06c1.05-.05 1.62-.22 2-.37.5-.2.85-.43 1.22-.8.37-.37.6-.72.8-1.22.15-.38.32-.95.37-2 .06-1.24.06-1.61.06-4.76s0-3.52-.06-4.76c-.05-1.05-.22-1.62-.37-2-.2-.5-.43-.85-.8-1.22-.37-.37-.72-.6-1.22-.8-.38-.15-.95-.32-2-.37C15.52 4 15.15 4 12 4zm0 3.4a4.6 4.6 0 1 1 0 9.2 4.6 4.6 0 0 1 0-9.2zm0 1.8a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zm5.95-2.3a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg></span>
+        Instagram&nbsp;<b style="color:var(--gold)">@giulio_con_la_g</b>
+      </a>
+      <a class="social-card" href="#" aria-label="TikTok">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M16.5 3c.4 1.7 1.5 3 3.2 3.6.6.2 1.3.3 2 .3v3.4c-1.6 0-3-.4-4.3-1.2v6.8c0 4.5-3.7 7.4-7.5 6.8-3.2-.5-5.4-3.4-5.1-6.7.3-3.3 3.3-5.7 6.5-5.5.4 0 .9.1 1.3.2v3.4c-.4-.1-.9-.2-1.4-.2-1.6 0-2.9 1.4-2.7 3.1.1 1.4 1.3 2.5 2.7 2.5 1.5 0 2.7-1.2 2.7-2.7V3h2.6z"/></svg></span>
+        TikTok&nbsp;<b style="color:var(--pink)">@giuliooldrati</b>
+      </a>
+      <a class="social-card" href="https://www.youtube.com/@giulio_oldrati" target="_blank" rel="noopener" aria-label="YouTube">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M22.6 7.2s-.2-1.5-.85-2.16c-.82-.86-1.74-.87-2.17-.92C16.6 4 12 4 12 4s-4.6 0-7.58.12c-.43.05-1.35.06-2.17.92C1.6 5.7 1.4 7.2 1.4 7.2S1.2 9 1.2 10.78v1.44C1.2 14 1.4 15.8 1.4 15.8s.2 1.5.85 2.16c.82.86 1.9.83 2.38.92 1.72.16 7.37.21 7.37.21s4.6 0 7.58-.12c.43-.05 1.35-.06 2.17-.92.65-.66.85-2.16.85-2.16s.2-1.78.2-3.58v-1.44c0-1.78-.2-3.58-.2-3.58zM9.8 14.7V8.3l5.95 3.2L9.8 14.7z"/></svg></span>
+        YouTube&nbsp;<b style="color:var(--cream)">Giulio Oldrati</b>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATE & CONTATTI ============ -->
+<section id="date" class="section" data-screen-label="03 Date e Contatti">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label scena-kicker">IN SCENA</div>
+      <h2 class="section-title">PROSSIME <span class="accent">DATE</span></h2>
+    </div>
+
+    <!-- Aggiorna le date facilmente modificando l'array DATES (in fondo allo script) o questo markup -->
+    <div class="dates-list" id="datesList"></div>
+
+    <!-- CONTATTI -->
+    <div class="contatti reveal" style="margin-top:120px">
+      <div class="section-label contatti-kicker" style="color:var(--gold)">SCRIVI · CHIAMA · PRENOTA</div>
+      <h3>Fammi uno <em>squillo,</em> dai!</h3>
+      <p class="lede">Per serate private, festival, club e collaborazioni: niente form, niente burocrazia. Telefono o email — e si parte.</p>
+      <div class="contact-cards">
+        <a class="contact-card" href="tel:+393914769619">
+          <span class="icon"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.7 3.6 4.9 6.3 6.3l2.1-2.1c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1l-2.4 2.3z"/></svg></span>
+          <div>
+            <div class="lab">Telefono</div>
+            <div class="val">+39 391 476 9619</div>
+          </div>
+        </a>
+        <a class="contact-card" href="mailto:g.oldrati11@gmail.com">
+          <span class="icon"><svg viewBox="0 0 24 24"><path d="M4 5h16c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V7c0-1.1.9-2 2-2zm0 2v.4l8 5 8-5V7H4zm16 2.6-7.4 4.6c-.4.3-.9.3-1.2 0L4 9.6V17h16V9.6z"/></svg></span>
+          <div>
+            <div class="lab">Email</div>
+            <div class="val">g.oldrati11@gmail.com</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="foot-inner">
+    <div>© 2026 Giulio Oldrati · Stand Up Comedy</div>
+    <div class="foot-icons">
+      <a href="https://www.instagram.com/giulio_con_la_g/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.42.56.22.96.48 1.38.9.42.42.68.82.9 1.38.17.43.37 1.06.42 2.23.07 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.42 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.17-1.06.37-2.23.42-1.25.07-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.42-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.17-.43-.37-1.06-.42-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.42-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.17 1.06-.37 2.23-.42C8.4 2.2 8.8 2.2 12 2.2zm0 3.4a4.6 4.6 0 1 0 0 9.2 4.6 4.6 0 0 0 0-9.2zm5.95.5a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg></a>
+      <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.5 3c.4 1.7 1.5 3 3.2 3.6.6.2 1.3.3 2 .3v3.4c-1.6 0-3-.4-4.3-1.2v6.8c0 4.5-3.7 7.4-7.5 6.8-3.2-.5-5.4-3.4-5.1-6.7.3-3.3 3.3-5.7 6.5-5.5.4 0 .9.1 1.3.2v3.4c-.4-.1-.9-.2-1.4-.2-1.6 0-2.9 1.4-2.7 3.1.1 1.4 1.3 2.5 2.7 2.5 1.5 0 2.7-1.2 2.7-2.7V3h2.6z"/></svg></a>
+      <a href="https://www.youtube.com/@giulio_oldrati" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22.6 7.2s-.2-1.5-.85-2.16c-.82-.86-1.74-.87-2.17-.92C16.6 4 12 4 12 4s-4.6 0-7.58.12c-.43.05-1.35.06-2.17.92C1.6 5.7 1.4 7.2 1.4 7.2S1.2 9 1.2 10.78v1.44C1.2 14 1.4 15.8 1.4 15.8s.2 1.5.85 2.16c.82.86 1.9.83 2.38.92 1.72.16 7.37.21 7.37.21s4.6 0 7.58-.12c.43-.05 1.35-.06 2.17-.92.65-.66.85-2.16.85-2.16s.2-1.78.2-3.58v-1.44c0-1.78-.2-3.58-.2-3.58zM9.8 14.7V8.3l5.95 3.2L9.8 14.7z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- DATE ---------- */
+/* Per aggiornare le date, modifica direttamente questo array. */
+const DATES = [
+  { day:"07", month:"MAGGIO", city:"MILANO", region:"Lombardia", venue:"Coso Milano", meta:"30 min · con Tommaso Adami", badge:"Headliner" },
+  { day:"08", month:"MAGGIO", city:"MILANO", region:"Lombardia", venue:"Noise Milano", meta:"10 min · MC Patrizia Emma Scialpi", badge:"Open Mic" },
+  { day:"09", month:"MAGGIO", city:"CAVA MANARA", region:"Pavia · Lombardia", venue:"Sumasum Fest", meta:"Collettivo Variegà · Festival", badge:"Festival" },
+  { day:"14", month:"MAGGIO", city:"VIGEVANO", region:"Pavia · Lombardia", venue:"La Room", meta:"Collettivo Variegà · Live", badge:"Live" },
+  { day:"22", month:"MAGGIO", city:"BOLOGNA", region:"Emilia Romagna", venue:"Doppio Malto", meta:"15 min · MC Paolo Eskere", badge:"Comedy Club" },
+];
+
+const list = document.getElementById('datesList');
+DATES.forEach((d, i) => {
+  const row = document.createElement('div');
+  row.className = 'date-row reveal delay-' + Math.min(4, i+1);
+  row.innerHTML = `
+    <div class="day">${d.day}<small>${d.month}</small></div>
+    <div class="city">${d.city}<span class="region">${d.region}</span></div>
+    <div class="venue">${d.venue}<span class="meta">${d.meta}</span></div>
+    <span class="badge">${d.badge}</span>
+  `;
+  list.appendChild(row);
+});
+
+/* ---------- IntersectionObserver ---------- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- Active nav link ---------- */
+const sections = ['home','video','date'].map(id => document.getElementById(id));
+const links = document.querySelectorAll('.navlink');
+const navIO = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+    }
+  });
+}, { rootMargin: "-40% 0px -55% 0px" });
+sections.forEach(s => navIO.observe(s));
+
+/* ---------- Mobile menu ---------- */
+const burger = document.getElementById('burgerBtn');
+const navlist = document.getElementById('navlist');
+burger.addEventListener('click', () => navlist.classList.toggle('open'));
+navlist.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navlist.classList.remove('open')));
+</script>
+</body>
+</html>
