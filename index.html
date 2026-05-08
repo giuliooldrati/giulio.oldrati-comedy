@@ -138,7 +138,7 @@ button{font:inherit}
 .kicker{
   display:inline-flex;align-items:center;gap:12px;
   font-family:"Barlow Condensed";font-weight:700;letter-spacing:.32em;text-transform:uppercase;
-  color:var(--pink);font-size:14px;margin-bottom:24px;
+  color:var(--pink);font-size:14px;margin-top:0;margin-bottom:24px;
 }
 .kicker .bar{width:46px;height:2px;background:var(--pink)}
 
@@ -271,6 +271,7 @@ button{font:inherit}
   position:absolute;left:10px;top:10px;z-index:2;
   background:var(--night-3);color:var(--cream);
   font-family:"Barlow Condensed";font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:11px;padding:6px 10px;border:1px solid var(--cream);
+  margin:0;
 }
 .video-card .placeholder{
   position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
@@ -354,14 +355,14 @@ button{font:inherit}
   font-size:clamp(28px,3.6vw,46px);
   letter-spacing:.06em;
   line-height:1;
-  margin-bottom:18px;
+  margin-top:0;margin-bottom:18px;
 }
 .scena-kicker{
   font-family:"Anton",sans-serif;
   font-size:clamp(28px,3.6vw,46px);
   letter-spacing:.06em;
   line-height:1;
-  margin-bottom:18px;
+  margin-top:0;margin-bottom:18px;
 }
 .contatti h3{
   font-family:"Anton";font-size:clamp(44px,6vw,84px);line-height:.95;color:var(--cream);
@@ -453,7 +454,7 @@ footer{
 
   <div class="hero-inner">
     <div class="hero-copy">
-      <div class="kicker" style="font-size: 18px">STAND UP COMEDY</div>
+      <h2 class="kicker" style="font-size: 18px">STAND UP COMEDY</h2>
       <h1 class="display">
         <span><i>GIULIO</i></span>
         <span><i>OLDRATI</i></span>
@@ -486,7 +487,7 @@ footer{
 <section id="video" class="section halftone" data-screen-label="02 Video">
   <div class="wrap">
     <div class="reveal">
-      <div class="section-label scena-kicker" style="margin-bottom: 36px">I MIEI VIDEO</div>
+      <h2 class="section-label scena-kicker" style="margin-bottom: 36px">I MIEI VIDEO</h2>
     </div>
 
     <div class="video-grid">
@@ -498,7 +499,7 @@ footer{
         <iframe src="https://www.youtube.com/embed/NtB8I63GEjA?start=184" title="Giulio Oldrati — Set" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
       <div class="video-card feature reveal delay-3">
-        <span class="vlabel">Set Completo · Comedy Central Open Mic Tour</span>
+        <h3 class="vlabel">Set Completo · Comedy Central Open Mic Tour</h3>
         <div class="placeholder">
           <div class="play">▶</div>
           <small>Incolla qui &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID"&gt;</small>
@@ -536,7 +537,7 @@ footer{
 
     <!-- CONTATTI -->
     <div class="contatti reveal" style="margin-top:120px">
-      <div class="section-label contatti-kicker" style="color:var(--gold)">SCRIVI · CHIAMA · PRENOTA</div>
+      <h2 class="section-label contatti-kicker" style="color:var(--gold)">SCRIVI · CHIAMA · PRENOTA</h2>
       <h3>Fammi uno <em>squillo,</em> dai!</h3>
       <p class="lede">Per serate private, festival, club e collaborazioni: niente form, niente burocrazia. Telefono o email — e si parte.</p>
       <div class="contact-cards">
