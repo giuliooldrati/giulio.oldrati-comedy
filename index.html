@@ -207,7 +207,7 @@
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://giuliooldrati-standupcomedy.it/#date",
+      "url": "https://link.dice.fm/xYCdi2Xd32b?sharer_id=5e1c95c1a7934d1e35b5e28a",
       "price": "0",
       "priceCurrency": "EUR",
       "availability": "https://schema.org/InStock",
@@ -664,6 +664,15 @@ button{font:inherit}
   font-family:"Barlow Condensed";font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px;
   padding:8px 14px;border:1.5px solid var(--cream);color:var(--cream);white-space:nowrap;
 }
+.date-row .badge-ticket{
+  display:inline-block;text-decoration:none;
+  background:var(--gold);color:var(--night);border:1.5px solid var(--gold);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.date-row .badge-ticket:hover{
+  transform:scale(1.07);
+  box-shadow:0 0 16px rgba(245,197,24,.55);
+}
 
 @media (max-width:760px){
   .date-row{grid-template-columns: 90px 1fr;grid-template-rows:auto auto;gap:8px 18px;padding:22px 6px}
@@ -928,7 +937,7 @@ const DATES = [
   { day:"07", month:"MAGGIO", city:"MILANO", region:"Lombardia", venue:"Coso Milano", meta:"30 min · con Tommaso Adami", badge:"Headliner" },
   { day:"08", month:"MAGGIO", city:"MILANO", region:"Lombardia", venue:"Noise Milano", meta:"10 min · MC Patrizia Emma Scialpi", badge:"Open Mic" },
   { day:"09", month:"MAGGIO", city:"CAVA MANARA", region:"Pavia · Lombardia", venue:"Sumasum Fest", meta:"Collettivo Variegà · Festival", badge:"Festival" },
-  { day:"12", month:"MAGGIO", city:"MILANO", region:"Lombardia", venue:"Salone 14 - Yellowsquare Milano", meta:"Open Mic · MC Carmine Del Grosso", badge:"LIVE" },
+  { day:"12", month:"MAGGIO", city:"MILANO", region:"Lombardia", venue:"Salone 14 - Yellowsquare Milano", meta:"Open Mic · MC Carmine Del Grosso", badge:"BIGLIETTI", ticketUrl:"https://link.dice.fm/xYCdi2Xd32b?sharer_id=5e1c95c1a7934d1e35b5e28a" },
   { day:"14", month:"MAGGIO", city:"VIGEVANO", region:"Pavia · Lombardia", venue:"La Room", meta:"Collettivo Variegà · Live", badge:"Live" },
   { day:"17", month:"MAGGIO", city:"VICENZA", region:"Veneto", venue:"Rumori Polpetteria", meta:"Open Mic", badge:"Open Mic" },
   { day:"22", month:"MAGGIO", city:"BOLOGNA", region:"Emilia Romagna", venue:"Doppio Malto", meta:"15 min · MC Paolo Eskere", badge:"Comedy Club" },
@@ -942,7 +951,10 @@ DATES.forEach((d, i) => {
     <div class="day">${d.day}<small>${d.month}</small></div>
     <div class="city">${d.city}<span class="region">${d.region}</span></div>
     <div class="venue">${d.venue}<span class="meta">${d.meta}</span></div>
-    <span class="badge">${d.badge}</span>
+    ${d.ticketUrl
+      ? `<a class="badge badge-ticket" href="${d.ticketUrl}" target="_blank" rel="noopener noreferrer">${d.badge}</a>`
+      : `<span class="badge">${d.badge}</span>`
+    }
   `;
   list.appendChild(row);
 });
