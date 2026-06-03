@@ -68,6 +68,44 @@
   {
     "@context": "https://schema.org",
     "@type": "Event",
+    "name": "Open Mic - Birrificio Martesana, Cernusco sul Naviglio",
+    "startDate": "2026-06-06T20:30",
+    "endDate": "2026-06-06T23:00",
+    "description": "Giulio Oldrati al Birrificio Martesana di Cernusco sul Naviglio per una serata di Open Mic. Birra artigianale, palco aperto e battute senza rete: la ricetta perfetta per una serata lombarda dove l'unica cosa che si misura è il tempo sul palco.",
+    "image": "https://giuliooldrati-standupcomedy.it/photo.jpg",
+    "location": {
+      "@type": "Place",
+      "name": "Birrificio Martesana",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Cernusco sul Naviglio",
+        "addressRegion": "Lombardia",
+        "addressCountry": "IT"
+      }
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Giulio Oldrati"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Birrificio Martesana",
+      "url": "https://giuliooldrati-standupcomedy.it/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://giuliooldrati-standupcomedy.it/#date",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-06-03"
+    },
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
     "name": "Giulio Oldrati - Stand Up Comedy a Piacenza",
     "startDate": "2026-06-10",
     "endDate": "2026-06-10T23:00",
@@ -860,6 +898,7 @@ footer{
 /* ---------- DATE ---------- */
 /* Per aggiornare le date, modifica direttamente questo array. */
 const DATES = [
+  { day:"6", month:"GIUGNO", city:"CERNUSCO SUL NAVIGLIO", region:"Lombardia", venue:"Birrificio Martesana", meta:"20:30 · Open Mic", badge:"OPEN MIC" },
   { day:"10", month:"GIUGNO", city:"PIACENZA", region:"Emilia Romagna", venue:"Sottomura", meta:"30 min · con Gianluca Bolsieri", badge:"STAND UP" },
   { day:"14", month:"GIUGNO", city:"TORRE D'ISOLA (PV)", region:"Lombardia", venue:"Festa della Birra", meta:"19:00 · One Man Show", badge:"LIVE" },
   { day:"23", month:"GIUGNO", city:"MILANO", region:"Lombardia", venue:"Registrazioni Comedy Central", meta:"Comedy Central", badge:"TV" },
