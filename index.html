@@ -170,7 +170,7 @@
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://giuliooldrati-standupcomedy.it/#date",
+      "url": "https://www.instagram.com/torrebeerfest/",
       "price": "0",
       "priceCurrency": "EUR",
       "availability": "https://schema.org/InStock",
@@ -862,7 +862,7 @@ footer{
 const DATES = [
   { day:"6", month:"GIUGNO", city:"CERNUSCO SUL NAVIGLIO", region:"Lombardia", venue:"Birrificio Martesana", meta:"20:30 · Open Mic", badge:"OPEN MIC" },
   { day:"10", month:"GIUGNO", city:"PIACENZA", region:"Emilia Romagna", venue:"Sottomura", meta:"30 min · con Gianluca Bolsieri", badge:"STAND UP" },
-  { day:"14", month:"GIUGNO", city:"TORRE D'ISOLA (PV)", region:"Lombardia", venue:"Festa della Birra", meta:"19:00 · One Man Show", badge:"LIVE" },
+  { day:"14", month:"GIUGNO", city:"TORRE D'ISOLA (PV)", region:"Lombardia", venue:"Festa della Birra", meta:"19:00 · One Man Show", infoUrl:"https://www.instagram.com/torrebeerfest/" },
   { day:"23", month:"GIUGNO", city:"MILANO", region:"Lombardia", venue:"Registrazioni Comedy Central", meta:"Comedy Central", badge:"TV", ticketUrl:"https://www.ticketone.it/event/21703567" },
   { day:"27", month:"GIUGNO", city:"SALICE TERME (PV)", region:"Lombardia", venue:"Golf Club", meta:"Presentatore · Serata Stand Up Comedy", badge:"LIVE" },
 ];
@@ -877,7 +877,9 @@ DATES.forEach((d, i) => {
     <div class="venue">${d.venue}<span class="meta">${d.meta}</span></div>
     ${d.ticketUrl
       ? `<a class="badge badge-ticket" href="${d.ticketUrl}" target="_blank" rel="noopener noreferrer">BIGLIETTI</a>`
-      : `<span class="badge">${d.badge}</span>`
+      : d.infoUrl
+        ? `<a class="badge badge-ticket" href="${d.infoUrl}" target="_blank" rel="noopener noreferrer">INFO QUI</a>`
+        : `<span class="badge">${d.badge}</span>`
     }
   `;
   list.appendChild(row);
