@@ -254,6 +254,44 @@
     },
     "eventStatus": "https://schema.org/EventScheduled",
     "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Giulio Oldrati - Live al Santeria, Milano",
+    "startDate": "2026-10-07T21:00",
+    "endDate": "2026-10-07T23:00",
+    "description": "Giulio Oldrati sale sul palco del Santeria di Milano in apertura dello spettacolo di Nello Taver. Pochi minuti per scaldare la sala e infilare più battute possibili prima di passare il microfono.",
+    "image": "https://giuliooldrati-standupcomedy.it/photo.jpg",
+    "location": {
+      "@type": "Place",
+      "name": "Santeria",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Milano",
+        "addressRegion": "Lombardia",
+        "addressCountry": "IT"
+      }
+    },
+    "performer": {
+      "@type": "Person",
+      "name": "Giulio Oldrati"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "Santeria",
+      "url": "https://giuliooldrati-standupcomedy.it/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://giuliooldrati-standupcomedy.it/#date",
+      "price": "0",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-10-01"
+    },
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode"
   }
 ]
 </script>
@@ -867,6 +905,7 @@ const DATES = [
   { day:"24", month:"SETTEMBRE", city:"VIGEVANO (PV)", region:"Lombardia", venue:"La Room", meta:"Collettivo Variegà", badge:"LIVE" },
   { day:"26-27", month:"SETTEMBRE", city:"CASTEGGIO (PV)", region:"Lombardia", venue:"Oltrecon · Fiera del Fumetto", meta:"Presentatore Evento", badge:"LIVE" },
   { day:"3", month:"OTTOBRE", city:"MILANO", region:"Lombardia", venue:"Balera dell'Ortica", meta:"30 min · Stand Up Show", badge:"STAND UP" },
+  { day:"7", month:"OTTOBRE", city:"MILANO", region:"Lombardia", venue:"Santeria", meta:"21:00 · Apertura Nello Taver", badge:"LIVE" },
 ];
 
 const list = document.getElementById('datesList');
