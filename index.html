@@ -360,7 +360,7 @@
     },
     "offers": {
       "@type": "Offer",
-      "url": "https://giuliooldrati-standupcomedy.it/#date",
+      "url": "https://www.eventbrite.it/e/biglietti-stand-up-comedy-sunday-roast-2004484270412?utm_experiment=test_share_listing&aff=ebdsshios&sg=0b67ecedf4174de5fbb0d1f863061d067891ee117de88b8d87029a5887361084b05c1db2f3a0625f8ee7b710671468d087aabb4106976cf355094053577221578975f893f781bc13fa5a73cd7e2a",
       "price": "0",
       "priceCurrency": "EUR",
       "availability": "https://schema.org/InStock",
@@ -1062,7 +1062,7 @@ const DATES = [
   { day:"5", month:"NOVEMBRE", city:"SALICE TERME (PV)", region:"Lombardia", venue:"Soqquadro", meta:"Open Mic · MC", badge:"OPEN MIC" },
   { day:"12", month:"NOVEMBRE", city:"BERGAMO", region:"Lombardia", venue:"Maite", meta:"Spettacolo Intero", badge:"BIGLIETTI", ticketUrl:"https://www.eventbrite.it/e/biglietti-maite-risate-presenta-regola-n6-di-e-con-giulio-oldrati-2003648731292?aff=oddtdtcreator" },
   { day:"15", month:"NOVEMBRE", city:"STRADELLA (PV)", region:"Lombardia", venue:"Golden Boy's", meta:"18:00 · Collettivo Variegà", badge:"LIVE" },
-  { day:"22", month:"NOVEMBRE", city:"MILANO", region:"Lombardia", venue:"Doppio Malto Navigli", meta:"Open Mic · Guest", badge:"OPEN MIC" },
+  { day:"22", month:"NOVEMBRE", city:"MILANO", region:"Lombardia", venue:"Doppio Malto Navigli", meta:"Open Mic · Guest", badge:"PRENOTA", ticketUrl:"https://www.eventbrite.it/e/biglietti-stand-up-comedy-sunday-roast-2004484270412?utm_experiment=test_share_listing&aff=ebdsshios&sg=0b67ecedf4174de5fbb0d1f863061d067891ee117de88b8d87029a5887361084b05c1db2f3a0625f8ee7b710671468d087aabb4106976cf355094053577221578975f893f781bc13fa5a73cd7e2a", ticketLabel:"PRENOTA" },
   { day:"24", month:"NOVEMBRE", city:"CHIETI", region:"Abruzzo", venue:"Primo Tazze e Stozze", meta:"21:00 · Spettacolo Intero", badge:"BIGLIETTI", ticketUrl:"https://oooh.events/evento/stand-up-giulio-oldrati-biglietti/" },
   { day:"26", month:"NOVEMBRE", city:"VIGEVANO (PV)", region:"Lombardia", venue:"La Room", meta:"Collettivo Variegà", badge:"LIVE" },
 ];
@@ -1077,7 +1077,7 @@ DATES.forEach((d, i) => {
     <div class="city">${d.city}<span class="region">${d.region}</span></div>
     <div class="venue">${d.venue}<span class="meta">${d.meta}</span></div>
     ${d.ticketUrl
-      ? `<a class="badge badge-ticket" href="${d.ticketUrl}" target="_blank" rel="noopener noreferrer">BIGLIETTI</a>`
+      ? `<a class="badge badge-ticket" href="${d.ticketUrl}" target="_blank" rel="noopener noreferrer">${d.ticketLabel || 'BIGLIETTI'}</a>`
       : d.infoUrl
         ? `<a class="badge badge-ticket" href="${d.infoUrl}" target="_blank" rel="noopener noreferrer">INFO QUI</a>`
         : `<span class="badge">${d.badge}</span>`
